@@ -8,7 +8,7 @@
 //Définition de la structure ARBRE
 struct ARBRE {
     int cle;
-    char *nom;
+    char nom[50];
     struct ARBRE *gauche, *droite;
 };
 
@@ -17,7 +17,7 @@ struct ARBRE* creerNoeud(int cle, char *nom);
 
 //Insertion de valeurs
 struct ARBRE* insert(struct ARBRE* a, int cle, char *nom);
-//Insertion de valeurs à partir d'un fichier (non fonctionnel)
+//Insertion de valeurs à partir d'un fichier
 struct ARBRE* saisiefichier(struct ARBRE* a, char *fichier);
 //Permet de trouver la cle la plus petite d'un arbre
 struct ARBRE* min(struct ARBRE* a);
@@ -36,6 +36,8 @@ void affichageinverse(struct ARBRE* a);
 void cleanBuffer();
 //Lecture de string sans \n
 int read(char *string, int lengh);
+
+char* getNom(char *nom);
 
 //Affichage du menu
 int menu();

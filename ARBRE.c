@@ -3,7 +3,7 @@
 struct ARBRE* creerNoeud(int cle, char *nom) {
     struct ARBRE* nouveau = (struct ARBRE*) malloc(sizeof(struct ARBRE));
     nouveau->cle=cle;
-    nouveau->nom=nom;
+    strcpy(nouveau->nom,nom);
     nouveau->gauche=nouveau->droite=NULL;
     return nouveau;
 }
@@ -25,7 +25,7 @@ struct ARBRE* saisiefichier(struct ARBRE* a, char *fichier) {
     FILE *f;
     int size, cle;
     char nom[50];
-    f = fopen(strncat(fichier, ".txt", strlen(fichier)+4), "r");//normalement ça ajoute .txt au nom du fichier
+    f = fopen(strncat(fichier, ".txt", strlen(fichier)+4), "r");//ajout de ".txt" au nom du fichier
     if(f!=NULL) {
         fscanf(f, "%d", &size);
         printf("%d\n", size);
@@ -33,7 +33,8 @@ struct ARBRE* saisiefichier(struct ARBRE* a, char *fichier) {
             fscanf(f, "%s", nom);
             printf("Nom de l'article : %s\n", nom);
             fscanf(f, "%d", &cle);
-            printf("Cle de l'article : %d\n", cle);
+            printf("ID de l'article : %d\n", cle);
+            a=insert(a,cle,nom);
         }
     }
     fclose(f);
@@ -147,6 +148,10 @@ int read(char *string, int lengh){
         cleanBuffer();
         return 0;
     }
+}
+
+char* getNom(char *nom){
+    return nom;
 }
 
 int menu() {
