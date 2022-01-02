@@ -90,7 +90,7 @@ void saisie(ARBRE a, int cle, char *nom){
         printf("%d\n", size);
         for (int i = 0; i<size; i++) {
             //PAS FINI
-            a= creerNoeud(tmp, NULL, NULL, NULL);//TAMERE
+            a= creerNoeud(tmp, NULL, NULL, NULL);
             fscanf(f, "%s", a->nom);
             printf("Nom de l'article : %s\n", a->nom);
             fscanf(f, "%d", &a->cle);
