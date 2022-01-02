@@ -4,80 +4,93 @@
 #include <strings.h>
 #include "header.h"
 
-typedef struct Noeud {
+struct Noeud {
     int cle;
     struct Noeud *gauche;
     struct Noeud *droite;
     char *nom;
-} TNoeud;
+};
+typedef struct Noeud TNoeud;
 
 typedef TNoeud *ARBRE;
 
-/*void afficher(ARBRE a) {
-    if (a) {
-        afficher(a->gauche);
-        printf("%d",a->cle);
-        afficher(a->droite);
-    }
-}*/
-
-ARBRE creerNoeud(int cle, ARBRE gauche, ARBRE droite, char *nom) {
-    ARBRE nouveau = (ARBRE) malloc(sizeof(TNoeud));
-    if (nouveau) {
-        nouveau->cle=cle;
-        nouveau->gauche=gauche;
-        nouveau->droite=droite;
-        nouveau->nom=nom;
-    }
+ARBRE creerNoeud(int cle, char *nom) {
+    ARBRE nouveau=NULL;
+    nouveau = (ARBRE) malloc(sizeof(TNoeud));
+    nouveau->cle=cle;
+    nouveau->gauche=NULL;
+    nouveau->droite=NULL;
+    nouveau->nom=nom;
     return nouveau;
 }
 
-//insérer n dans l'arbre a
-ARBRE inserer(ARBRE a, int n) {
+ARBRE inserer(ARBRE a, int cle) {
     //si a vide, créer noeud avec n et le renvoyer
     if (!a) {
-        return creerNoeud(n, NULL, NULL, NULL);
+        return creerNoeud(cle, NULL);
     }
     else {
-        if (n < a->cle) {
-            a->gauche= inserer(a->gauche, n);
+        if (cle < a->cle) {
+            a->gauche= inserer(a->gauche, cle);
         } else {
-            a->droite= inserer(a->droite, n);
+            a->droite= inserer(a->droite, cle);
         }
     }
     return a;
 }
 
-void saisie(ARBRE a, int n){//fonction jumelle de inserer juste pour test
-    ARBRE tmp=NULL;
-    //le choix de l'ID sera proposé avant l'execution de la fonction, same pour inserer
+ARBRE insert(ARBRE a, int cle, char *nom) {
+    ARBRE prec;
+    if (!a) {
+        return creerNoeud(cle, nom);
+    }
+    while(a){
+        prec=a;
+        if(cle < a->cle){
+            a=a->gauche;
+        }
+        else {
+            a=a->droite;
+        }
+        if (cle < prec->cle){
+            prec->gauche= creerNoeud(cle, nom);
+        }
+        else {
+            prec->droite= creerNoeud(cle, nom);
+        }
+    }
+    return a;
+}
+
+void saisie(ARBRE a, int cle, char *nom){
+    //ARBRE tmp=NULL;
     if(!a) {
-        tmp = malloc(sizeof(ARBRE));
-        tmp->gauche=tmp->droite=NULL;
-        printf("Nom de l'article:\n");
-        scanf("%s", tmp->nom);
-        tmp->cle=n;
+        ARBRE tmp = malloc(sizeof(ARBRE));
+        tmp->gauche=NULL;
+        tmp->droite=NULL;
+        tmp->nom=nom;
+        tmp->cle=cle;
         a=tmp;
         return;
     }
 
-    if(n < a->cle){
-        saisie(a->gauche, n);
-    } else if (n > a->cle){
-        saisie(a->droite, n);
+    if(cle < a->cle){
+        saisie(a->gauche, cle, nom);
+    } else if (cle > a->cle){
+        saisie(a->droite, cle, nom);
     }
 }
 
-ARBRE saisiefichier(char *fichier, ARBRE a) {//PAS BON//A EDIT //meme pb que saisie, genre la fonction est techniquement bonne mais pas pour les arbres
+/*ARBRE saisiefichier(char *fichier, ARBRE a) {//PAS BON//A EDIT //meme pb que saisie, genre la fonction est techniquement bonne mais pas pour les arbres
     FILE *f;
     int size;
-    f = fopen(strncat(fichier, ".txt", 4), "r");//normalement ça ajoute .txt au nom du fichier
+    f = fopen(strncat(fichier, ".txt", strlen(fichier)+4), "r");//normalement ça ajoute .txt au nom du fichier
     if(f!=NULL) {
         fscanf(f, "%d", &size);
         printf("%d\n", size);
         for (int i = 0; i<size; i++) {
             //PAS FINI
-            a= creerNoeud();
+            a= creerNoeud(tmp, NULL, NULL, NULL);//TAMERE
             fscanf(f, "%s", a->nom);
             printf("Nom de l'article : %s\n", a->nom);
             fscanf(f, "%d", &a->cle);
@@ -86,11 +99,32 @@ ARBRE saisiefichier(char *fichier, ARBRE a) {//PAS BON//A EDIT //meme pb que sai
     }
     fclose(f);
     return a;
-}
+}*/
 
 ARBRE suppression(ARBRE a, int cle) {
-    while(a){
-        if(cle==a) ;
+    ARBRE NoeudASuppr;
+    if (a->cle==cle){
+        NoeudASuppr=a;
+        if (NoeudASuppr->gauche==NULL){
+            return NoeudASuppr->gauche;
+        }
+        else{
+            a=NoeudASuppr->gauche;
+            while(a->gauche!=NULL){
+                a=a->droite;
+            }
+            a->droite=NoeudASuppr->droite;
+            return NoeudASuppr->gauche;
+        }
+        free(NoeudASuppr);
+    }
+    else{
+        if(a->cle>cle){
+            a->gauche= suppression(a->gauche,cle);
+        }
+        else{
+            a->droite= suppression(a->droite,cle);
+        }
     }
     return a;
 }
@@ -109,11 +143,7 @@ void recherche(ARBRE a, int cle) {
     }
 }
 
-void ajout(ARBRE *a, int cle){
-
-}
-
-void affichage(ARBRE a){//MANQUE LE FICHIER
+void affichage(ARBRE a){
     if(!a){
         return;
     }
@@ -139,25 +169,65 @@ void affichageinverse(ARBRE a){
     }
 }
 
+int menu() {
+    int choix;
+    printf("Menu :\n");
+    printf("1. Saisie directe\n");
+    printf("2. Saisie depuis un fichier txt\n");
+    printf("3. Suppression\n");
+    printf("4. Recherche\n");
+    printf("5. Affichage\n");
+    printf("6. Affichage inverse\n");
+    printf("7. Quitter\n");
+    scanf("%d",&choix);
+    return choix;
+}
+
 int main() {
-    int n, X=0;
-    ARBRE articles[X];
-    char *typeS=NULL, *nomF=NULL;
-    printf("Saisie directe ou depuis un fichier txt ? (D/F)\n");
-    scanf("%s", typeS);
-    if(typeS=="D") {
-        printf("Combien d'articles ?\n");
-        scanf("%d", &X);
-        printf("Nombre d'articles a ajouter:\n");
-        scanf("%d", &n);
-        saisie(n, articles);
+    int cle, X=0, fin=0, SearchCle, DelCle;
+    ARBRE articles = malloc(sizeof(ARBRE));
+    char *nomF=NULL, *nom=NULL;
+    while(!fin){
+        switch(menu()){
+            case 1:
+                printf("Combien d'articles ?\n");
+                scanf("%d", &X);
+                for (int i=0; i<X; i++){
+                    printf("Numero de l'article a ajouter:\n");
+                    scanf("%d", &cle);
+                    printf("Nom de l'article:\n");
+                    scanf("%s", &nom);
+                    saisie(articles, cle, nom);
+                }
+                break;
+            case 2:
+                printf("Nom du fichier ?\n");
+                scanf("%s", nomF);
+                //saisiefichier(nomF, articles);
+                break;
+            case 3:
+                printf("Entrer l'ID à supprimer :\n");
+                scanf("%d",&DelCle);
+                suppression(articles, DelCle);
+                break;
+            case 4:
+                printf("Entrer l'ID à rechercher :\n");
+                scanf("%d",&SearchCle);
+                recherche(articles,SearchCle);
+                break;
+            case 5:
+                affichage(articles);
+                break;
+            case 6:
+                affichageinverse(articles);
+                break;
+            case 7:
+                fin=1;
+                break;
+            default:
+                printf("Erreur de saisie");
+                break;
+        }
     }
-    else if(typeS=="F"){
-        printf("Nom du fichier ?\n");
-        scanf("%s", nomF);
-        saisiefichier(nomF, articles);
-    }
-    else
-    ///ARBRE a=NULL;
     return 0;
 }
