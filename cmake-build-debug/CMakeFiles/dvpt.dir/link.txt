@@ -1,3 +1,3 @@
-"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\dvpt.dir/objects.a
-C:\tamer\bin\ar.exe cr CMakeFiles\dvpt.dir/objects.a @CMakeFiles\dvpt.dir\objects1.rsp
-C:\tamer\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\dvpt.dir/objects.a -Wl,--no-whole-archive -o dvpt.exe -Wl,--out-implib,libdvpt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\dvpt.dir\linklibs.rsp
+"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\dvpt.dir/objects.a
+C:\Users\proki\MINGW\bin\ar.exe qc CMakeFiles\dvpt.dir/objects.a @CMakeFiles\dvpt.dir\objects1.rsp
+C:\Users\proki\MINGW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\dvpt.dir/objects.a -Wl,--no-whole-archive -o dvpt.exe -Wl,--out-implib,libdvpt.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\dvpt.dir\linklibs.rsp

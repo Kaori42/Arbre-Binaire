@@ -1,4 +1,4 @@
-ToolSet: w64 3.3 (local)@C:\tamer
+ToolSet: w64 3.3 (local)@C:\Users\proki\MINGW
 Options: 
 
 Options:

@@ -1,10 +1,11 @@
-"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\THEO\Desktop\Travail\L2\dvpt
+"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\proki\OneDrive\Nouveau dossier\dvpt"
 -- The C compiler identification is GNU 4.8.3
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: C:/tamer/bin/gcc.exe - skipped
+-- Check for working C compiler: C:/Users/proki/MINGW/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/THEO/Desktop/Travail/L2/dvpt/cmake-build-debug
+-- Build files have been written to: C:/Users/proki/OneDrive/Nouveau dossier/dvpt/cmake-build-debug
+CMake File API: C:\Users\proki\OneDrive\Nouveau dossier\dvpt\cmake-build-debug: Le fournisseur de fichier cloud n’est pas en cours d'exécution

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/THEO/Desktop/Travail/L2/dvpt
+# Install script for directory: C:/Users/proki/OneDrive/Nouveau dossier/dvpt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/tamer/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/proki/MINGW/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/THEO/Desktop/Travail/L2/dvpt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/proki/OneDrive/Nouveau dossier/dvpt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

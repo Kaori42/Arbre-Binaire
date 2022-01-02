@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/dvpt.dir/main.c.obj"
+  "CMakeFiles/dvpt.dir/main.c.obj.d"
   "dvpt.exe"
   "dvpt.exe.manifest"
   "dvpt.pdb"
