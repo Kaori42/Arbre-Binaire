@@ -5,10 +5,10 @@ int main() {
     char nom[50], nomF[255];
     int cle, nb=0, fin=0, SearchCle, DelCle;
     //données inséré à des fins de test
-    articles=insert(articles, 1, "as");
-    articles=insert(articles, 2, "rf");
-    articles=insert(articles, 50, "tg");
-    articles=insert(articles, 30, "ik");
+    //articles=insert(articles, 1, "as");
+    //articles=insert(articles, 2, "rf");
+    //articles=insert(articles, 50, "tg");
+    //articles=insert(articles, 30, "ik");
     while(!fin){
         switch(menu()){
             case 1:
