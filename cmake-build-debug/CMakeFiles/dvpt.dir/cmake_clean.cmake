@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/dvpt.dir/ARBRE.c.obj"
+  "CMakeFiles/dvpt.dir/ARBRE.c.obj.d"
   "CMakeFiles/dvpt.dir/main.c.obj"
   "CMakeFiles/dvpt.dir/main.c.obj.d"
   "dvpt.exe"

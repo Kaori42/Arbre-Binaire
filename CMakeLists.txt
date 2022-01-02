@@ -3,4 +3,4 @@ project(dvpt C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(dvpt main.c)
+add_executable(dvpt main.c ARBRE.h ARBRE.c)
