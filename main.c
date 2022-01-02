@@ -1,22 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
 #include "header.h"
 
-struct Noeud {
-    int cle;
-    struct Noeud *gauche;
-    struct Noeud *droite;
-    char *nom;
-};
-typedef struct Noeud TNoeud;
-
-typedef TNoeud *ARBRE;
-
-ARBRE creerNoeud(int cle, char *nom) {
-    ARBRE nouveau=NULL;
-    nouveau = (ARBRE) malloc(sizeof(TNoeud));
+TNoeud* creerNoeud(int cle, char *nom) {
+    TNoeud* nouveau=NULL;
+    nouveau = (TNoeud*) malloc(sizeof(TNoeud));
     nouveau->cle=cle;
     nouveau->gauche=NULL;
     nouveau->droite=NULL;
@@ -39,9 +25,12 @@ ARBRE inserer(ARBRE a, int cle) {
     return a;
 }
 
-ARBRE insert(ARBRE a, int cle, char *nom) {
+ARBRE insert(ARBRE a, int cle) {
     ARBRE prec;
+    char *nom = NULL;
     if (!a) {
+        printf("Nom de l'article:\n");
+        scanf("%s", nom);
         return creerNoeud(cle, nom);
     }
     while(a){
@@ -62,26 +51,20 @@ ARBRE insert(ARBRE a, int cle, char *nom) {
     return a;
 }
 
-void saisie(ARBRE a, int cle, char *nom){
-    //ARBRE tmp=NULL;
-    if(!a) {
-        ARBRE tmp = malloc(sizeof(ARBRE));
-        tmp->gauche=NULL;
-        tmp->droite=NULL;
-        tmp->nom=nom;
-        tmp->cle=cle;
-        a=tmp;
-        return;
+TNoeud* insert2(ARBRE a, int cle, char *nom){
+    if(a==NULL){
+        return creerNoeud(cle,nom);
     }
-
-    if(cle < a->cle){
-        saisie(a->gauche, cle, nom);
-    } else if (cle > a->cle){
-        saisie(a->droite, cle, nom);
+    if(cle<a->cle){
+        a->gauche= insert2(a->gauche, cle, nom);
     }
+    else if(cle>a->cle){
+        a->droite= insert2(a->droite, cle, nom);
+    }
+    return a;
 }
 
-/*ARBRE saisiefichier(char *fichier, ARBRE a) {//PAS BON//A EDIT //meme pb que saisie, genre la fonction est techniquement bonne mais pas pour les arbres
+/*ARBRE saisiefichier(char *fichier, ARBRE a) {
     FILE *f;
     int size;
     f = fopen(strncat(fichier, ".txt", strlen(fichier)+4), "r");//normalement ça ajoute .txt au nom du fichier
@@ -156,6 +139,15 @@ void affichage(ARBRE a){
     }
 }
 
+void aff(ARBRE a)
+{
+    if (a != NULL) {
+        aff(a->gauche);
+        printf("%d, %s \n", a->cle, a->nom);
+        aff(a->droite);
+    }
+}
+
 void affichageinverse(ARBRE a){
     if(!a){
         return;
@@ -185,8 +177,8 @@ int menu() {
 
 int main() {
     int cle, X=0, fin=0, SearchCle, DelCle;
-    ARBRE articles = malloc(sizeof(ARBRE));
-    char *nomF=NULL, *nom=NULL;
+    ARBRE articles=NULL;
+    char *nomF, *nom;
     while(!fin){
         switch(menu()){
             case 1:
@@ -196,8 +188,9 @@ int main() {
                     printf("Numero de l'article a ajouter:\n");
                     scanf("%d", &cle);
                     printf("Nom de l'article:\n");
-                    scanf("%s", &nom);
-                    saisie(articles, cle, nom);
+                    scanf("%s",&(*nom));
+                    printf("%s\n", nom);
+                    insert2(articles, cle, nom);
                 }
                 break;
             case 2:
@@ -216,7 +209,7 @@ int main() {
                 recherche(articles,SearchCle);
                 break;
             case 5:
-                affichage(articles);
+                aff(articles);
                 break;
             case 6:
                 affichageinverse(articles);
