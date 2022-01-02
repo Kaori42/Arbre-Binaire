@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/THEO/Desktop/Travail/L2/dvpt/header.h
+
+C:/Users/THEO/Desktop/Travail/L2/dvpt/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+strings.h
+-
+header.h
+C:/Users/THEO/Desktop/Travail/L2/dvpt/header.h
+
