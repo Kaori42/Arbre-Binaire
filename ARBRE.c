@@ -23,20 +23,25 @@ struct ARBRE* insert(struct ARBRE* a, int cle, char *nom){
 
 struct ARBRE* saisiefichier(struct ARBRE* a, char *fichier) {
     FILE *f;
-    int size, cle;
-    char nom[50];
+    int size, cle=0;
+    char nom[50], buffer[51], sizec[10], delims[]=";", *tmp=NULL;
     f = fopen(strncat(fichier, ".txt", strlen(fichier)+4), "r");//ajout de ".txt" au nom du fichier
     if(f!=NULL) {
-        fscanf(f, "%d", &size);
-        printf("%d\n", size);
+        printf("Lecture en cours...\n");
+        fgets(sizec,50,f);
+        size = atoi(sizec);
+        printf("Lecture de %d articles\n", size);
         for (int i = 0; i<size; i++) {
-            fscanf(f, "%s", nom);
+            fgets(buffer,51,f);
+            tmp= strtok(buffer,delims);
+            strcpy(nom,tmp);
+            tmp= strtok(NULL,delims);
+            cle = atoi(tmp);
             printf("Nom de l'article : %s\n", nom);
-            fscanf(f, "%d", &cle);
             printf("ID de l'article : %d\n", cle);
             a=insert(a,cle,nom);
         }
-    }
+    } else printf("Nom de fichier errone\n");
     fclose(f);
     return a;
 }
@@ -58,13 +63,13 @@ struct ARBRE* del(struct ARBRE* a, int cle){
         if (a->gauche == NULL) {
             struct ARBRE* temp = a->droite;
             free(a);
-            printf("Supprimer avec succes\n");
+            printf("Supprime avec succes\n");
             return temp;
         }
         else if (a->droite == NULL) {
             struct ARBRE* temp = a->gauche;
             free(a);
-            printf("Supprimer avec succes\n");
+            printf("Supprime avec succes\n");
             return temp;
         }
         struct ARBRE* temp = min(a->droite);
@@ -148,10 +153,6 @@ int read(char *string, int lengh){
         cleanBuffer();
         return 0;
     }
-}
-
-char* getNom(char *nom){
-    return nom;
 }
 
 int menu() {

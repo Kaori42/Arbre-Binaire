@@ -29,12 +29,13 @@ int main() {
                     printf("Nom de l'article:\n");;
                     read(nom,50);
                     printf("%d, %s\n",cle, nom);
-                    articles=insert(articles, cle, getNom(nom));
+                    articles=insert(articles, cle, nom);
                 }
                 break;
             case 2:
-                printf("La premiere ligne doit comporter le nombre de donnees (cle)\n");
-                printf("Les suivantes, le nom de celle-ci suivi de son ID\n");
+                printf("La premiere ligne doit comporter le nombre de donnees (cles)\n");
+                printf("Les suivantes, le nom de la donnee suivi de son ID separe par ;\n");
+                printf("Exemple : \"Croquettes pour chat:42\"\n");
                 printf("Nom du fichier ?\n");
                 cleanBuffer();
                 read(nomF, 255);

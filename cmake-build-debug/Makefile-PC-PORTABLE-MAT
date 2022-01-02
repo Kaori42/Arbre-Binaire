@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt"
+CMAKE_SOURCE_DIR = "C:\Users\proki\OneDrive\Nouveau dossier\dvpt"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\proki\OneDrive\Nouveau dossier\dvpt\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt\cmake-buil
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt\cmake-build-debug\CMakeFiles" "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\proki\OneDrive\Nouveau dossier\dvpt\cmake-build-debug\CMakeFiles" "C:\Users\proki\OneDrive\Nouveau dossier\dvpt\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\proki\Downloads\Dev\Nouveau dossier\dvpt\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\proki\OneDrive\Nouveau dossier\dvpt\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -128,30 +128,6 @@ dvpt/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\dvpt.dir\build.make CMakeFiles/dvpt.dir/build
 .PHONY : dvpt/fast
 
-ARBRE.obj: ARBRE.c.obj
-.PHONY : ARBRE.obj
-
-# target to build an object file
-ARBRE.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\dvpt.dir\build.make CMakeFiles/dvpt.dir/ARBRE.c.obj
-.PHONY : ARBRE.c.obj
-
-ARBRE.i: ARBRE.c.i
-.PHONY : ARBRE.i
-
-# target to preprocess a source file
-ARBRE.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\dvpt.dir\build.make CMakeFiles/dvpt.dir/ARBRE.c.i
-.PHONY : ARBRE.c.i
-
-ARBRE.s: ARBRE.c.s
-.PHONY : ARBRE.s
-
-# target to generate assembly for a file
-ARBRE.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\dvpt.dir\build.make CMakeFiles/dvpt.dir/ARBRE.c.s
-.PHONY : ARBRE.c.s
-
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -185,9 +161,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... dvpt
-	@echo ... ARBRE.obj
-	@echo ... ARBRE.i
-	@echo ... ARBRE.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -37,8 +37,6 @@ void cleanBuffer();
 //Lecture de string sans \n
 int read(char *string, int lengh);
 
-char* getNom(char *nom);
-
 //Affichage du menu
 int menu();
 

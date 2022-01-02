@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/proki/OneDrive/Nouveau dossier/dvpt
+# Install script for directory: C:/Users/proki/Downloads/Dev/Nouveau dossier/dvpt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/proki/OneDrive/Nouveau dossier/dvpt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/proki/Downloads/Dev/Nouveau dossier/dvpt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
